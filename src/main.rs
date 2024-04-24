@@ -74,24 +74,22 @@ fn execute() {
         );
     }
 
-    println!("{}", "-".repeat(30));
+    println!("{}{}{}", "-".repeat(10), "funcionario1", "-".repeat(10));
     let funcionario1 = registros.remove(&id_f1).unwrap();
-    println!("Antes: {funcionario1:?}");
 
-    let gerente = promove(funcionario1);
+    let gerente1 = promove(funcionario1);
 
     let tentativa_resgatar_fulano = registros.get(&id_f1);
 
     println!("Depois (tentativa de resgate): {tentativa_resgatar_fulano:?}");
-    println!("Depois Gerente: {gerente:?}");
+    println!("Depois Gerente: {gerente1:?}");
+    registros.insert(id_f1, gerente1);
 
-    let diretor = promove(gerente);
-    println!("Depois Diretor: {diretor:?}");
+    println!("{}{}{}", "-".repeat(10), "funcionario2", "-".repeat(10));
+    let funcionario2 = registros.remove(&id_f2).unwrap();
+    let gerente2 = promove(funcionario2);
+    let diretor = promove(gerente2);
 
-    let gerente = rebaixar(diretor);
-    println!("Depois rebaixado para gerente: {gerente:?}");
-
-    registros.insert(id_f1, gerente);
 
     println!("{}", "-".repeat(30));
     for registro in registros.iter() {

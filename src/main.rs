@@ -88,8 +88,11 @@ fn execute() {
     println!("{}{}{}", "-".repeat(10), "funcionario2", "-".repeat(10));
     let funcionario2 = registros.remove(&id_f2).unwrap();
     let gerente2 = promove(funcionario2);
+    println!("Depois Gerente: {gerente2:?}");
     let diretor = promove(gerente2);
-
+    println!("Depois Diretor: {diretor:?}");
+    let gerente2 = rebaixar(diretor);
+    println!("Depois Gerente Novamente: {gerente2:?}");
 
     println!("{}", "-".repeat(30));
     for registro in registros.iter() {

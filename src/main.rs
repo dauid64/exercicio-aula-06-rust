@@ -7,7 +7,7 @@ use escritorio::{da_aumento, promove, Beneficio, DadosFuncionais, DadosPessoais}
 use escritorio::{Assalariado, AtributosFuncionais};
 
 use crate::escritorio::Funcionario::{self, *};
-use crate::escritorio::{desconta_falta, Diretor, FuncionarioRegular, Gerente};
+use crate::escritorio::{desconta_falta, rebaixar, Diretor, FuncionarioRegular, Gerente};
 
 fn main() {
     execute();
@@ -88,7 +88,10 @@ fn execute() {
     let diretor = promove(gerente);
     println!("Depois Diretor: {diretor:?}");
 
-    registros.insert(id_f1, diretor);
+    let gerente = rebaixar(diretor);
+    println!("Depois rebaixado para gerente: {gerente:?}");
+
+    registros.insert(id_f1, gerente);
 
     println!("{}", "-".repeat(30));
     for registro in registros.iter() {

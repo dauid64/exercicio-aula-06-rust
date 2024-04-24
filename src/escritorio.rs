@@ -247,6 +247,28 @@ pub fn promove(funcionario: Funcionario) -> Funcionario {
     }
 }
 
+pub fn rebaixar(funcionario: Funcionario) -> Funcionario {
+    match funcionario {
+        Ger(funcionario) => {
+            let mut result = FuncionarioRegular::new(funcionario.dados_pessoais, funcionario.dados_funcionais, Beneficio::new(
+                100.0,
+                100.0
+            ));
+            result.set_salario(result.salario() / 2.00);
+            Reg(result)
+        }
+        Dir(funcionario) => {
+            let mut result = Gerente::new(funcionario.dados_pessoais, funcionario.dados_funcionais, 2);
+            result.set_salario(result.salario() / 5.00);
+            Ger(result)
+        },
+        _ => {
+            println!("WARNING - TENTATIVA DE REBAIXAR FUNCIONARIO NÃO SUPORTADA");
+            funcionario
+        }
+    }
+}
+
 #[derive(Debug)]
 pub struct Diretor {
     dados_pessoais: DadosPessoais,

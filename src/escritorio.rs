@@ -235,3 +235,46 @@ pub fn promove(funcionario: Funcionario) -> Funcionario {
         }
     }
 }
+
+// Resolução by Carlos
+
+#[derive(Debug)]
+pub struct Diretor {
+    dados_pessoais: DadosPessoais,
+    dados_funcionais: DadosFuncionais,
+    setor: String,
+}
+
+impl Diretor {
+    pub fn new(
+        dados_pessoais: DadosPessoais,
+        dados_funcionais: DadosFuncionais,
+        setor: String,
+    ) -> Self {
+        Self {
+            dados_pessoais,
+            dados_funcionais,
+            setor
+        }
+    }
+
+    pub fn dados_pessoais(&self) -> &DadosPessoais {
+        &self.dados_pessoais
+    }
+
+    pub fn dados_funcionais(&self) -> &DadosFuncionais {
+        &self.dados_funcionais
+    }
+
+    pub fn setor(&self) -> &str {
+        self.setor.as_str() // passando as_str para otimizar memória
+    }
+}
+
+impl Assalariado for Diretor {
+    impl_assalariado_for_funcionario!(dados_funcionais);
+}
+
+impl AtributosFuncionais for Diretor {
+    impl_atributos_funcionais_for_funcionario!(dados_pessoais, dados_funcionais);
+}

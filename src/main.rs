@@ -7,7 +7,7 @@ use escritorio::{da_aumento, promove, Beneficio, DadosFuncionais, DadosPessoais}
 use escritorio::{Assalariado, AtributosFuncionais};
 
 use crate::escritorio::Funcionario::{self, *};
-use crate::escritorio::{desconta_falta, FuncionarioRegular, Gerente};
+use crate::escritorio::{desconta_falta, Diretor, FuncionarioRegular, Gerente};
 
 fn main() {
     execute();
@@ -82,8 +82,16 @@ fn execute() {
 
     let tentativa_resgatar_fulano = registros.get(&id_f1);
 
+    let diretor = Diretor::new(DadosPessoais::new(
+        "Pedro".to_string(),
+        30
+    ), DadosFuncionais::new(
+        1200.0
+    ), "TI".to_string());
+
     println!("Depois (tentativa de resgate): {tentativa_resgatar_fulano:?}");
     println!("Depois Gerente: {gerente:?}");
+    println!("Diretor: {diretor:?}");
 
     registros.insert(id_f1, gerente);
 

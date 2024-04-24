@@ -11,4 +11,4 @@ Link da aula 06: https://youtu.be/khYeyQO06nM?si=YKICESrDpuvTHvvP
 - [x] Adicionar um método rebaixar, que regride o cargo e diminui o salário do funcionário pela metade.
 - [x] No programa principal, promover o funcionário 2 para gerente e depois para diretor.
 - [x] Ao final, imprimir os registros, como está fazendo.
-- [] Criar uma macro pra evitar duplicação de código na implementação da trait AtributosFuncionais para a enum Funcionario.
+- [x] Criar uma macro pra evitar duplicação de código na implementação da trait AtributosFuncionais para a enum Funcionario.

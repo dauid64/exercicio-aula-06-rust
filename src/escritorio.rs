@@ -109,24 +109,6 @@ pub enum Funcionario {
 
 use Funcionario::*;
 
-impl AtributosFuncionais for Funcionario {
-    fn dados_funcionais(&self) -> &DadosFuncionais {
-        match self {
-            Reg(pessoa) => pessoa.dados_funcionais(),
-            Ger(pessoa) => pessoa.dados_funcionais(),
-            Dir(pessoa) => pessoa.dados_funcionais(),
-        }
-    }
-
-    fn dados_pessoais(&self) -> &DadosPessoais {
-        match self {
-            Reg(pessoa) => pessoa.dados_pessoais(),
-            Ger(pessoa) => pessoa.dados_pessoais(),
-            Dir(pessoa) => pessoa.dados_pessoais(),
-        }
-    }
-}
-
 #[derive(Debug)]
 pub struct FuncionarioRegular {
     dados_pessoais: DadosPessoais,
@@ -225,6 +207,26 @@ pub fn da_aumento<T: Assalariado>(pessoa: &mut T, valor: f64) {
 }
 
 // Resolução by Carlos
+
+macro_rules! return_dados_pessoas {
+    ($self:expr, $dados:ident) => {
+        match $self {
+            Reg(pessoa) => pessoa.$dados(),
+            Ger(pessoa) => pessoa.$dados(),
+            Dir(pessoa) => pessoa.$dados(),
+        }
+    };
+}
+
+impl AtributosFuncionais for Funcionario {
+    fn dados_funcionais(&self) -> &DadosFuncionais {
+        return_dados_pessoas!(self, dados_funcionais)
+    }
+
+    fn dados_pessoais(&self) -> &DadosPessoais {
+        return_dados_pessoas!(self, dados_pessoais)
+    }
+}
 
 pub fn promove(funcionario: Funcionario) -> Funcionario {
     match funcionario {

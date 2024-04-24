@@ -1,6 +1,6 @@
 ## Exercício Aule 06 de Rust do Fernando Celestino
 
-Resolução do exercício da aula 06 de Rust do Tech Lead Fernando Rezende Celestino ao qual dá vídeos aulas sobre Rust no youtube.
+Resolução do exercício da aula 06 de Rust ministrado pelo Tech Lead da DataVirtus, Fernando Rezende Celestino.
 
 Link da aula 06: https://youtu.be/khYeyQO06nM?si=YKICESrDpuvTHvvP
 

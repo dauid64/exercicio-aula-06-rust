@@ -104,6 +104,7 @@ pub trait AtributosFuncionais {
 pub enum Funcionario {
     Reg(FuncionarioRegular),
     Ger(Gerente),
+    Dir(Diretor),
 }
 
 use Funcionario::*;
@@ -113,6 +114,7 @@ impl AtributosFuncionais for Funcionario {
         match self {
             Reg(pessoa) => pessoa.dados_funcionais(),
             Ger(pessoa) => pessoa.dados_funcionais(),
+            Dir(pessoa) => pessoa.dados_funcionais(),
         }
     }
 
@@ -120,6 +122,7 @@ impl AtributosFuncionais for Funcionario {
         match self {
             Reg(pessoa) => pessoa.dados_pessoais(),
             Ger(pessoa) => pessoa.dados_pessoais(),
+            Dir(pessoa) => pessoa.dados_pessoais(),
         }
     }
 }
@@ -221,6 +224,8 @@ pub fn da_aumento<T: Assalariado>(pessoa: &mut T, valor: f64) {
     pessoa.set_salario(pessoa.salario() + valor);
 }
 
+// Resolução by Carlos
+
 pub fn promove(funcionario: Funcionario) -> Funcionario {
     match funcionario {
         Reg(funcionario) => {
@@ -229,14 +234,18 @@ pub fn promove(funcionario: Funcionario) -> Funcionario {
             result.set_salario(result.salario() * 2.0);
             Ger(result)
         }
+        Ger(funcionario) => {
+            let mut result =
+                Diretor::new(funcionario.dados_pessoais, funcionario.dados_funcionais, "TI".to_string());
+            result.set_salario(result.salario() * 5.0);
+            Dir(result)
+        },
         _ => {
-            println!("WARNING - TENTATIVA DE PROMOVER GERENTE NÃO SUPORTADA");
+            println!("WARNING - TENTATIVA DE PROMOVER DIRETOR NÃO SUPORTADA");
             funcionario
         }
     }
 }
-
-// Resolução by Carlos
 
 #[derive(Debug)]
 pub struct Diretor {

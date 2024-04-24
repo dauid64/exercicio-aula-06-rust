@@ -82,18 +82,13 @@ fn execute() {
 
     let tentativa_resgatar_fulano = registros.get(&id_f1);
 
-    let diretor = Diretor::new(DadosPessoais::new(
-        "Pedro".to_string(),
-        30
-    ), DadosFuncionais::new(
-        1200.0
-    ), "TI".to_string());
-
     println!("Depois (tentativa de resgate): {tentativa_resgatar_fulano:?}");
     println!("Depois Gerente: {gerente:?}");
-    println!("Diretor: {diretor:?}");
 
-    registros.insert(id_f1, gerente);
+    let diretor = promove(gerente);
+    println!("Depois Diretor: {diretor:?}");
+
+    registros.insert(id_f1, diretor);
 
     println!("{}", "-".repeat(30));
     for registro in registros.iter() {

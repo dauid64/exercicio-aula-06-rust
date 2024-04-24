@@ -7,7 +7,7 @@ Link da aula 06: https://youtu.be/khYeyQO06nM?si=YKICESrDpuvTHvvP
 ### To do List:
 
 - [x] Adicionar mais um cargo, de Diretor ao rol de funcionários, com struct própria e implementando todas as traits necessárias.
-- [] Alterar o método promove para inserir a promoção de Gerente para Diretor.
+- [x] Alterar o método promove para inserir a promoção de Gerente para Diretor.
 - [] Adicionar um método rebaixar, que regride o cargo e diminui o salário do funcionário pela metade.
 - [] No programa principal, promover o funcionário 2 para gerente e depois para diretor.
 - [] Ao final, imprimir os registros, como está fazendo.
